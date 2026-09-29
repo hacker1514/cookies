@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Cookies</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="Cookie Logo" class="brand-logo">
+        <div>
+          <h1>Manage Cookies</h1>
+          <p>Extract, Import & Manage Cookies in JSON Format</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-main">
+      <!-- 1. URL Control Card -->
+      <div class="card url-card">
+        <div class="url-input-container">
+          <span class="url-label">Website URL:</span>
+          <div class="input-wrapper">
+            <span class="input-icon">🌐</span>
+            <input type="text" id="target-url" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+            <button id="btn-clear-url" class="btn-clear-input hidden" title="Clear input">&times;</button>
+          </div>
+        </div>
+
+        <!-- 3 Core Action Buttons -->
+        <div class="actions-grid">
+          <button id="btn-extract" class="btn-action btn-extract">
+            <span class="btn-icon">📥</span>
+            <div>
+              <strong>Extract JSON</strong>
+              <small>Get cookies for this URL</small>
+            </div>
+          </button>
+
+          <button id="btn-import" class="btn-action btn-import">
+            <span class="btn-icon">📤</span>
+            <div>
+              <strong>Import JSON</strong>
+              <small>Inject JSON cookies into site</small>
+            </div>
+          </button>
+
+          <button id="btn-delete" class="btn-action btn-delete">
+            <span class="btn-icon">🗑️</span>
+            <div>
+              <strong>Delete Cookies</strong>
+              <small>Remove all cookies for site</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. JSON Workspace Card -->
+      <div class="card json-card">
+        <div class="card-header">
+          <div class="card-title-wrap">
+            <h3>JSON Payload</h3>
+            <span class="pill-badge" id="json-count">0 Cookies</span>
+          </div>
+          <div class="card-toolbar">
+            <button id="btn-copy" class="btn-tool" title="Copy JSON to clipboard">
+              📋 Copy JSON
+            </button>
+            <button id="btn-download" class="btn-tool" title="Download .json file">
+              💾 Download
+            </button>
+            <label class="btn-tool btn-upload" title="Upload JSON file">
+              📂 Upload File
+              <input type="file" id="file-input" accept=".json,.txt" class="hidden">
+            </label>
+            <button id="btn-sample" class="btn-tool" title="Load sample JSON">
+              ✨ Sample
+            </button>
+            <button id="btn-clear-json" class="btn-tool text-danger" title="Clear text">
+              🧹 Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="editor-area">
+          <textarea id="json-box" placeholder='Click "Extract JSON" above, or paste cookie JSON array here to import:
+[
+  {
+    "name": "session_id",
+    "value": "sample_token_value",
+    "domain": ".example.com",
+    "path": "/",
+    "secure": true,
+    "httpOnly": true
+  }
+]' spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <!-- 3. Cookies Table Card -->
+      <div class="card table-card">
+        <div class="card-header">
+          <div class="card-title-wrap">
+            <h3>Cookies List</h3>
+            <span class="pill-badge" id="table-count">0 Items</span>
+          </div>
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search cookies..." autocomplete="off">
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Domain</th>
+                <th>Path</th>
+                <th>Flags</th>
+                <th>Expiry</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+          <div id="table-empty" class="table-empty">
+            <p>No cookies extracted yet. Enter a URL above and click <strong>Extract JSON</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Created by <strong>Niranjan Kumar K</strong> of <strong>kni-org</strong></p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

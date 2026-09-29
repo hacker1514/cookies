@@ -1,0 +1,82 @@
+/* Clean Professional White Popup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 280px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+}
+
+.popup-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.title-wrap h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.title-wrap p {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+/* Single Dashboard Button */
+.btn-dashboard {
+  width: 100%;
+  padding: 11px 16px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+  transition: all 0.15s ease;
+}
+
+.btn-dashboard:hover {
+  background-color: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-dashboard:active {
+  transform: translateY(0);
+}
+
+.btn-dashboard .arrow {
+  transition: transform 0.15s ease;
+}
+
+.btn-dashboard:hover .arrow {
+  transform: translateX(3px);
+}
